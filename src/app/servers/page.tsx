@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import Header from '@/components/Header';
-import { useAuth } from '@/hooks/useAuth';
-import { account } from '@/lib/appwrite';
-// import { databases } from '@/lib/appwrite';
-// import { Query } from '@appwrite/client';
-import LoadingSpinner from '@/components/LoadingSpinner';
+import { useEffect, useState } from "react";
+import Header from "../../components/Header";
+import { useAuth } from "../../hooks/useAuth";
+import { account } from "../../lib/appwrite";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 interface Server {
   $id: string;
-  n: string; // name
-  d?: string; // description
-  a?: string; // avatar id
-  p?: boolean; // is private
+  n: string;
+  d?: string;
+  a?: string;
+  p?: boolean;
 }
 
 export default function ServersPage() {
@@ -27,22 +25,23 @@ export default function ServersPage() {
         setLoading(false);
         return;
       }
+
       try {
-        // Create a JWT for API authentication
         const jwt = await account.createJWT();
-        const res = await fetch('/api/servers', {
+        const res = await fetch("/api/servers", {
           headers: {
-            'x-appwrite-jwt': jwt.jwt,
+            "x-appwrite-jwt": jwt.jwt,
           },
         });
         const json = await res.json();
         setServers((json.servers || []) as Server[]);
       } catch (err) {
-        console.error('Failed to fetch servers', err);
+        console.error("Failed to fetch servers", err);
       } finally {
         setLoading(false);
       }
     };
+
     fetchServers();
   }, [user]);
 
