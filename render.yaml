@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: rampchat
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    rootDir: .
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Add all your other environment variables here via the Render dashboard

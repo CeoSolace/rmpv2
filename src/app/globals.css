@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for RampChat */
+html,
+body {
+  @apply min-h-screen bg-gray-950 text-gray-50 antialiased;
+}
+
+/* Anchor styles: use blue accents from Tailwind's default palette. */
+a {
+  @apply text-blue-500 hover:underline;
+}
