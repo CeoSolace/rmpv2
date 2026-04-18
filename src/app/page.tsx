@@ -1,13 +1,14 @@
 "use client";
 
-import Header from '@/components/Header';
-import AuthForm from '@/components/AuthForm';
-import HomeFeed from '@/components/HomeFeed';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import { useAuth } from '@/hooks/useAuth';
+import Header from "../components/Header";
+import AuthForm from "../components/AuthForm";
+import HomeFeed from "../components/HomeFeed";
+import LoadingSpinner from "../components/LoadingSpinner";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Page() {
   const { user, loading } = useAuth();
+
   return (
     <>
       <Header />
